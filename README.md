@@ -3,7 +3,8 @@
 PHP 5.6.40 for CentOS/RHEL 6 and 7, rebuilt with the complete patch series that
 [Ondřej Surý](https://deb.sury.org/) maintains for Debian and Ubuntu. That series backports security fixes
 from current PHP branches to 5.6, including the fix for CVE-2026-109618 and CVE-2026-109619
-("Avoid state corruption via bailout", backported from 8.2.35).
+("Avoid state corruption via bailout", backported from 8.2.35) and, since 5.6.40-105, CVE-2023-0662
+(multipart request body DoS, adds the `max_multipart_body_parts` INI setting).
 
 Upstream PHP 5.6 has been end of life since 2019. These packages exist for legacy Enterprise Linux hosts
 that cannot move to a current PHP yet. Plan your migration anyway.
@@ -50,7 +51,7 @@ The RPMs and SRPM end up in `dist/el6/` and `dist/el7/`.
 
 ## Notes
 
-* The sources are the `5.6.40-104` patch set from packages.sury.org, which publishes it as a snapshot build.
+* The sources are the `5.6.40-105` patch set from packages.sury.org, which publishes it as a snapshot build.
   The series is applied unchanged except for the patches listed below; the build system is regenerated, as in
   the Debian build.
 * Left out on purpose: `0251-Add-minimal-privacy-preserving-secure-DNS-telemetry-.patch`. It is not a

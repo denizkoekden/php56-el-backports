@@ -4,6 +4,8 @@ set -euo pipefail
 el="$1"
 out="/work/dist/$el"
 mkdir -p "$out" ~/rpmbuild/SOURCES ~/rpmbuild/SPECS
+# RPMs of an earlier revision would make the smoke test install two versions side by side.
+rm -f "$out"/*.rpm
 cp /work/sources/* ~/rpmbuild/SOURCES/
 cp /work/php56.spec ~/rpmbuild/SPECS/
 rpmbuild -ba ~/rpmbuild/SPECS/php56.spec > "$out/build.log" 2>&1 || { tail -40 "$out/build.log"; exit 1; }

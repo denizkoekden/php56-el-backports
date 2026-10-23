@@ -3,8 +3,8 @@
 # Installs into /opt/php56 so it can sit next to the distribution PHP; nothing is enabled automatically.
 
 %global inst      /opt/php56
-%global sury_ver  104+0~20261021.134+ubuntu24.04~1.gbp7401dd
-%global sury_rev  104
+%global sury_ver  105+0~20261022.135+ubuntu24.04~1.gbp37a17e
+%global sury_rev  105
 %global apxs      %(test -x /usr/bin/apxs && echo /usr/bin/apxs || echo /usr/sbin/apxs)
 %global debug_package %{nil}
 
@@ -195,6 +195,10 @@ rm -rf %{buildroot}/.channels %{buildroot}/.depdb* %{buildroot}/.filemap %{build
 %config(noreplace) %{inst}/etc/php.d/30-pdo_pgsql.ini
 
 %changelog
+* Fri Oct 23 2026 Deniz Kökden - 5.6.40-105.1
+- Rebuild of the deb.sury.org php5.6 5.6.40-105 patch series, which adds the backported fix
+  for CVE-2023-0662 (DoS when parsing multipart request bodies, new max_multipart_body_parts INI).
+
 * Wed Oct 21 2026 Deniz Kökden - 5.6.40-104.1
 - Rebuild of the deb.sury.org php5.6 5.6.40-104 patch series for Enterprise Linux 6 and 7,
   including the backported fix for CVE-2026-109618 and CVE-2026-109619.
